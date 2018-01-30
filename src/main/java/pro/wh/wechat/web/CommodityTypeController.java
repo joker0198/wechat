@@ -5,10 +5,11 @@ import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import pro.wh.wechat.Constants;
 import pro.wh.wechat.core.Servlets;
 import pro.wh.wechat.model.CommodityType;
 import pro.wh.wechat.service.CommodityTypeService;
@@ -43,16 +44,38 @@ public class CommodityTypeController {
     }
 
     @RequestMapping(value = "/add", method = RequestMethod.GET)
-    public String add(){
+    public String add(Model model){
+        model.addAttribute("entity", new CommodityType());
         return "/commodity_type/add";
     }
 
     @RequestMapping(value = "/save", method = RequestMethod.POST)
-    public String save(@Valid @ModelAttribute("entity") CommodityType entity){
+    public String save(@Valid @ModelAttribute("entity") CommodityType entity, RedirectAttributes redirectAttributes){
         try {
             commodityTypeService.save(entity);
+            redirectAttributes.addFlashAttribute(Constants.MSG, "保存成功!");
         } catch (Exception e) {
             e.printStackTrace();
+            redirectAttributes.addFlashAttribute(Constants.MSG, "保存失败!");
+        }
+        return "redirect:/commodity_type/list";
+    }
+
+    @RequestMapping(value = "/edit/{id}", method = RequestMethod.GET)
+    public String edit(@PathVariable("id") Long id, Model model){
+        CommodityType entity = commodityTypeService.findOne(id);
+        model.addAttribute("entity", entity);
+        return "/commodity_type/add";
+    }
+
+    @RequestMapping(value = "/delete", method = RequestMethod.POST)
+    public String delete(Long id, RedirectAttributes redirectAttributes){
+        try {
+            commodityTypeService.delete(id);
+            redirectAttributes.addFlashAttribute(Constants.MSG, "删除成功!");
+        } catch (Exception e) {
+            e.printStackTrace();
+            redirectAttributes.addFlashAttribute(Constants.MSG, "删除失败!");
         }
         return "redirect:/commodity_type/list";
     }

@@ -14,8 +14,10 @@ public class CommodityType extends BaseEntity{
     private int state = 0;
     /** 分类名称 */
     private String name;
+    /** 分类图片 */
+    private String image;
     /** 关联商品 */
-    private List<Commodity> commodityList = Lists.newArrayList();
+    private transient List<Commodity> commodityList = Lists.newArrayList();
 
     public int getState() {
         return state;
@@ -40,5 +42,13 @@ public class CommodityType extends BaseEntity{
 
     public void setCommodityList(List<Commodity> commodityList) {
         this.commodityList = commodityList;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
 }

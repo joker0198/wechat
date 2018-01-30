@@ -38,6 +38,15 @@ public class CommodityTypeService {
         return commodityTypeDao.findAll(this.getPageSpec(searchParams), pageRequest);
     }
 
+    @Transactional(readOnly = true)
+    public CommodityType findOne(Long id){
+        return commodityTypeDao.findOne(id);
+    }
+
+    public void delete(Long id){
+        commodityTypeDao.delete(id);
+    }
+
     /**
      * 组装JPA检索条件
      * @param searchParams
@@ -55,5 +64,10 @@ public class CommodityTypeService {
                 return cb.conjunction();
             }
         };
+    }
+
+    @Transactional(readOnly = true)
+    public List<CommodityType> findAll(){
+        return ( List<CommodityType>)commodityTypeDao.findAll();
     }
 }

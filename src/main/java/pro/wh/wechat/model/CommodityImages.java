@@ -17,6 +17,15 @@ public class CommodityImages extends BaseEntity{
     /** 所属商品 */
     private Commodity commodity;
 
+    public CommodityImages(){
+
+    }
+
+    public CommodityImages(String image, Commodity commodity){
+        this.image = image;
+        this.commodity = commodity;
+    }
+
     public int getState() {
         return state;
     }

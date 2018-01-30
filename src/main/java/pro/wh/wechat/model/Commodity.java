@@ -26,9 +26,11 @@ public class Commodity extends BaseEntity{
     /** 原价 */
     private BigDecimal marketPrice = new BigDecimal("0.00");
     /** 所属商品分类 */
-    private CommodityType commodityType;
+    private transient CommodityType commodityType;
+    /** 列表图片 */
+    private String image;
     /** 商品图片 */
-    private List<CommodityImages> imagesList = Lists.newArrayList();
+    private transient List<CommodityImages> imagesList = Lists.newArrayList();
 
     public int getState() {
         return state;
@@ -88,5 +90,13 @@ public class Commodity extends BaseEntity{
 
     public void setImagesList(List<CommodityImages> imagesList) {
         this.imagesList = imagesList;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
 }

@@ -15,34 +15,36 @@
         <div class="container-fluid">
             <div class="row-fluid">
                 <div class="btn-toolbar">
-                    <button class="btn btn-primary"><i class="icon-plus"></i> 新增</button>
+                    <a class="btn btn-primary" href="/commodity/add"><i class="icon-plus"></i> 新增</a>
                 </div>
+                <form id="inputForm" action="/commodity_type/list" method="post">
+                </form>
                 <div class="well">
                     <table class="table">
                         <thead>
                         <tr>
                             <th>#</th>
-                            <th>名称</th>
-                            <th>图片</th>
-                            <th>类型</th>
+                            <th>标题</th>
                             <th>价格</th>
-                            <th>单位</th>
+                            <th>原价</th>
+                            <th>分类</th>
                             <th style="width: 26px;"></th>
                         </tr>
                         </thead>
                         <tbody>
+                        <#list page.content as e>
                         <tr>
-                            <td>1</td>
-                            <td>Mark</td>
-                            <td>Tompson</td>
-                            <td>the_mark7</td>
-                            <td>the_mark7</td>
-                            <td>the_mark7</td>
+                            <td>${e.id}</td>
+                            <td>${e.title}</td>
+                            <td>${e.price}</td>
+                            <td>${e.marketPrice}</td>
+                            <td>${e.commodityType.name}</td>
                             <td>
-                                <a href="user.html"><i class="icon-pencil"></i></a>
+                                <a href="#"><i class="icon-pencil"></i></a>
                                 <a href="#myModal" role="button" data-toggle="modal"><i class="icon-remove"></i></a>
                             </td>
                         </tr>
+                        </#list>
                         </tbody>
                     </table>
                 </div>

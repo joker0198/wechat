@@ -7,7 +7,8 @@
 <link rel="stylesheet" type="text/css" href="/static/lib/bootstrap/css/bootstrap.css">
 <link rel="stylesheet" type="text/css" href="/static/stylesheets/theme.css">
 <link rel="stylesheet" href="/static/lib/font-awesome/css/font-awesome.css">
-<script src="/static/lib/jquery-1.7.2.min.js" type="text/javascript"></script>
+<script src="/static/lib/jquery-1.8.1.min.js" type="text/javascript"></script>
+<script src="/static/lib/jquery.form/jquery.form.js" type="text/javascript"></script>
 <!-- Demo page code -->
 <style type="text/css">
         #line-chart {
@@ -38,3 +39,5 @@
 <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../assets/ico/apple-touch-icon-114-precomposed.png">
 <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../assets/ico/apple-touch-icon-72-precomposed.png">
 <link rel="apple-touch-icon-precomposed" href="../assets/ico/apple-touch-icon-57-precomposed.png">
+<script src="/static/lib/bootstrap/js/bootstrap.js"></script>
+<script type="text/javascript" src="/static/lib/layer-v3.0.3/layer.js"></script>
