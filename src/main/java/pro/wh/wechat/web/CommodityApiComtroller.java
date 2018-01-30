@@ -61,6 +61,7 @@ public class CommodityApiComtroller {
         return gson.toJson(result);
     }
 
+    //
     @RequestMapping(value = "search", method = RequestMethod.GET)
     public String search(String title){
         logger.info("title:" + title);
